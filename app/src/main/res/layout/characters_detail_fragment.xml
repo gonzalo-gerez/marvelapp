@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/detailPrimaryText"
+        style="@style/primaryTextStyle"
+        android:gravity="center"
+        android:padding="@dimen/dimen10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Gonzalo Gerez" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/detailThumb"
+        style="@style/frescoItemStyle"
+        android:layout_width="@dimen/dimen200dp"
+        android:layout_height="@dimen/dimen200dp"
+        app:actualImageResource="@drawable/no_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailPrimaryText"
+        app:placeholderImage="@drawable/no_image"
+        app:placeholderImageScaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/detailBody"
+        style="@style/secondaryTextStyle"
+        android:padding="@dimen/dimen10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailThumb"
+        tools:text="Been gaming with this dude for 15 years. Since Rainbow Six Vegas on 360. I have some good gaming memories with him. He tried but couldn’t get one. Little did he know I was able to get him one. Looking forward to playing another generation with him" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/cardStyle"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/item_selector">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/itemThumb"
+            style="@style/frescoItemStyle"
+            android:layout_marginEnd="@dimen/dimen5"
+            android:clickable="true"
+            android:focusable="true"
+            android:transitionName="@string/thumb_transition"
+            app:actualImageResource="@drawable/no_image"
+            app:placeholderImage="@drawable/no_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/viewIdicator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/viewIdicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_view_indicator"
+            app:layout_constraintBottom_toBottomOf="@id/itemTitle"
+            app:layout_constraintEnd_toStartOf="@id/itemTitle"
+            app:layout_constraintStart_toEndOf="@id/itemThumb"
+            app:layout_constraintTop_toTopOf="@id/itemTitle" />
+
+        <TextView
+            android:id="@+id/itemTitle"
+            style="@style/fadingEdgeText"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/viewIdicator"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Este es un titulo bastante largo" />
+
+        <TextView
+            android:id="@+id/itemBodyText"
+            style="@style/secondaryTextStyle"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dimen5"
+            android:layout_marginTop="@dimen/dimen5"
+            android:layout_marginEnd="@dimen/dimen5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/itemThumb"
+            app:layout_constraintTop_toBottomOf="@id/itemTitle"
+            tools:text="Been gaming with this dude for 15 years. Since Rainbow Six Vegas on 360. I have some good gaming memories with him. He tried but couldn’t get one. Little did he know I was able to get him one. Looking forward to playing another generation with him" />
+
+
+        <Button
+            android:id="@+id/itemDismiss"
+            style="@style/secondaryButtonStyle"
+            android:text="@string/dismissPost"
+            android:textSize="@dimen/text10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
