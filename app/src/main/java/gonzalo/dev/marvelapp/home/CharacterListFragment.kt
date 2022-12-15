@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.activityViewModels
-import gonzalo.dev.core.domain.model.Character
+import gonzalo.dev.core.domain.model.CharacterDataModel
 import gonzalo.dev.marvelapp.R
 import gonzalo.dev.marvelapp.common.list.BaseListFragment
 import gonzalo.dev.marvelapp.image.ImageActivity
 
-class CharacterListFragment : BaseListFragment<Character>() {
+class CharacterListFragment : BaseListFragment<CharacterDataModel>() {
 
     companion object {
         fun newInstance() = CharacterListFragment()
@@ -23,15 +23,15 @@ class CharacterListFragment : BaseListFragment<Character>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.paginationState.observe(viewLifecycleOwner, {
+        viewModel.paginationState.observe(viewLifecycleOwner) {
             dataSetReady()
             getList().adapter?.notifyDataSetChanged()
-        })
+        }
 
-        viewModel.characterState.observe(viewLifecycleOwner, { dataSet ->
+        viewModel.characterState.observe(viewLifecycleOwner) { dataSet ->
             dataSetReady()
             getList().adapter = adapter.also { it.setData(dataSet) }
-        })
+        }
 
         viewModel.fetchCharacters()
     }
@@ -40,11 +40,11 @@ class CharacterListFragment : BaseListFragment<Character>() {
         viewModel.refreshList()
     }
 
-    override fun onItemClicked(item: Character) {
+    override fun onItemClicked(item: CharacterDataModel) {
         viewModel.showDetailFragment(item)
     }
 
-    override fun onItemAction(item: Character, view: View) {
+    override fun onItemAction(item: CharacterDataModel, view: View) {
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             activity as Activity, view, getString(R.string.thumb_transition)
         )

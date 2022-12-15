@@ -7,13 +7,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion '30.0.2'
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "gonzalo.dev.marvelapp"
         minSdkVersion 29
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -34,8 +33,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -43,6 +42,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'gonzalo.dev.marvelapp'
 }
 
 dependencies {
@@ -50,30 +50,29 @@ dependencies {
     implementation project(path: ':core')
 
     /*      AndroidX        */
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
 
-    implementation "androidx.fragment:fragment-ktx:1.3.6"
+    implementation "androidx.fragment:fragment-ktx:1.5.5"
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
-    implementation("androidx.activity:activity-ktx:1.4.0")
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation("androidx.activity:activity-ktx:1.6.1")
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     /*      Google      */
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation "com.google.code.gson:gson:$gson_version"
 
     /*      Hilt        */
-    implementation "com.google.dagger:hilt-android:2.34-beta"
+    implementation "com.google.dagger:hilt-android:2.44"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    kapt "com.google.dagger:hilt-android-compiler:2.34-beta"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt "com.google.dagger:hilt-android-compiler:2.44"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     /*          Retrofit            */
@@ -90,13 +89,13 @@ dependencies {
     /*      Test        */
     testImplementation 'junit:junit:4.+'
     testImplementation "androidx.arch.core:core-testing:$arch_version"
-    testImplementation "androidx.test:core:1.4.0"
+    testImplementation "androidx.test:core:1.5.0"
     testImplementation "org.mockito:mockito-core:3.3.3"
     testImplementation "io.mockk:mockk:1.12.0"
 
     // For Robolectric tests.
     testImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
     // ...with Kotlin.
-    kaptTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.44'
     testImplementation "org.robolectric:robolectric:4.4"
 }

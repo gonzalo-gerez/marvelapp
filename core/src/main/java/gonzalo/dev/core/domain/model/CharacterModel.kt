@@ -1,9 +1,15 @@
 package gonzalo.dev.core.domain.model
 
-import gonzalo.dev.core.datasource.dto.Thumbnail
+import gonzalo.dev.core.data.dto.Thumbnail
 import java.io.Serializable
 
-class Character(
+class CharacterModel(
+    val offset: Int,
+    val count: Int,
+    val data: List<CharacterDataModel>
+) : Serializable
+
+class CharacterDataModel(
     val id: Long,
     val name: String,
     val description: String,

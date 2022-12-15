@@ -1,4 +1,4 @@
-package gonzalo.dev.marvelapp.common.annotation
+package gonzalo.dev.core.common
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.CLASS)
