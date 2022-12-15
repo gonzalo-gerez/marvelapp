@@ -6,12 +6,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.components.SingletonComponent
-import gonzalo.dev.core.domain.model.Character
-import gonzalo.dev.core.usecase.FetchCharacterUseCase
+import gonzalo.dev.core.domain.usecase.FetchCharacterUseCase
+import gonzalo.dev.core.domain.usecase.FetchCharacterUseCaseImpl
 import gonzalo.dev.marvelapp.BuildConfig
-import gonzalo.dev.marvelapp.common.annotation.Timeout
-import gonzalo.dev.marvelapp.home.implementations.CharacterFromNetwork
-import gonzalo.dev.marvelapp.home.service.HomeService
+import gonzalo.dev.core.common.Timeout
+import gonzalo.dev.core.data.repository.CharacterFromNetwork
+import gonzalo.dev.core.data.services.HomeService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit
 class UseCaseModule {
 
     @Provides
-    fun provideFetchCharacterUseCase(homeService: HomeService) = FetchCharacterUseCase(
+    fun provideFetchCharacterUseCase(homeService: HomeService): FetchCharacterUseCase = FetchCharacterUseCaseImpl(
         CharacterFromNetwork(homeService)
     )
 }

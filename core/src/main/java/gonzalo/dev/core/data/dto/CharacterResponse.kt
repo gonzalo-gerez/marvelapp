@@ -1,4 +1,4 @@
-package gonzalo.dev.core.datasource.dto
+package gonzalo.dev.core.data.dto
 
 data class CharacterResponse(
     val code: Int,

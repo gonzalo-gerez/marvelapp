@@ -32,13 +32,14 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             showFromStack(CharacterDetailFragment::class.java.simpleName)
                 ?: addFragment(CharacterDetailFragment(), R.id.secondPane)
         }
+
         showFromStack(CharacterListFragment::class.java.simpleName)
             ?: addFragment(CharacterListFragment.newInstance(), R.id.firstPane)
 
-        getViewModel().characterDetailState.observe(this, {
+        getViewModel().characterDetailState.observe(this) {
             if (!getViewModel().isDualPane)
                 replaceFragment(CharacterDetailFragment.newInstance(it), R.id.firstPane, true)
-        })
+        }
     }
 
     override fun createViewModelFactory(): HomeViewModel {

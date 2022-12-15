@@ -7,18 +7,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
-import gonzalo.dev.core.domain.model.Character
+import gonzalo.dev.core.domain.model.CharacterDataModel
+import gonzalo.dev.core.domain.model.CharacterModel
 import gonzalo.dev.marvelapp.R
 import gonzalo.dev.marvelapp.common.list.BaseAdapter
 import gonzalo.dev.marvelapp.common.list.ICardClick
 import gonzalo.dev.marvelapp.common.util.FrescoUtils
 
-class CharacterAdapter(private val callback: ICardClick<Character>) :
-    BaseAdapter<Character, CharacterAdapter.PostViewHolder>() {
+class CharacterAdapter(private val callback: ICardClick<CharacterDataModel>) :
+    BaseAdapter<CharacterDataModel, CharacterAdapter.PostViewHolder>() {
 
     private var selectedPosition = RecyclerView.NO_POSITION
 
-    override fun setData(dataSet: ArrayList<Character>) {
+    override fun setData(dataSet: ArrayList<CharacterDataModel>) {
         if (_data.isNotEmpty()) _data.addAll(dataSet) else _data = dataSet
         notifyDataSetChanged()
     }
@@ -47,7 +48,7 @@ class CharacterAdapter(private val callback: ICardClick<Character>) :
         private val dismiss: Button by lazy { item.findViewById(R.id.itemDismiss) }
         private val viewIndicator: ImageView by lazy { item.findViewById(R.id.viewIdicator) }
 
-        fun bind(character: Character) {
+        fun bind(character: CharacterDataModel) {
             title.text = character.name
             body.text = character.description
             FrescoUtils.setImage(
