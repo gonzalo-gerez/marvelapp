@@ -22,7 +22,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField 'String', 'BASE_URL', "\"http://gateway.marvel.com/\""
+            buildConfigField 'String', 'BASE_URL', "\"https://gateway.marvel.com/\""
             buildConfigField 'String', 'PUBLIC_API_KEY', "\"90f9b1d8c869151a2e83d108e20f27e9\""
             buildConfigField 'String', 'PRIVATE_API_KEY', "\"b7af41448d4e61f54d49fd808c874e05cd32895f\""
         }
@@ -46,8 +46,6 @@ android {
 }
 
 dependencies {
-
-    implementation project(path: ':core')
 
     /*      AndroidX        */
     implementation 'androidx.core:core-ktx:1.9.0'

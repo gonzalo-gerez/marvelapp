@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".home.presentation.HomeActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".image.ImageActivity"
+            android:name=".comic_image.ImageActivity"
             android:exported="true"
             android:theme="@style/Theme.MyProject.NoActionBar" />
     </application>
