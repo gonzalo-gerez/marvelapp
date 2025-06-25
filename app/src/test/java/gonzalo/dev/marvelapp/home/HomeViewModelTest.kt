@@ -2,11 +2,12 @@ package gonzalo.dev.marvelapp.home
 
 import android.os.Looper.getMainLooper
 import androidx.lifecycle.Observer
-import gonzalo.dev.core.data.dto.CharacterResponse
-import gonzalo.dev.core.domain.model.CharacterModel
-import gonzalo.dev.core.domain.usecase.FetchCharacterUseCaseImpl
 import gonzalo.dev.marvelapp.AbstractRobolectricTest
 import gonzalo.dev.marvelapp.common.mvvm.ViewState
+import gonzalo.dev.marvelapp.home.data.dto.CharacterResponse
+import gonzalo.dev.marvelapp.home.domain.model.CharacterModel
+import gonzalo.dev.marvelapp.home.domain.usecase.FetchCharacterUseCase
+import gonzalo.dev.marvelapp.home.presentation.HomeViewModel
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -29,7 +30,7 @@ class HomeViewModelTest : AbstractRobolectricTest() {
         runBlocking {
             val observer = mockk<Observer<ArrayList<CharacterModel>>>(relaxed = true)
             val dataSet = mockk<ArrayList<CharacterModel>>(relaxed = true)
-            val useCase = mockk<FetchCharacterUseCaseImpl>(relaxed = true)
+            val useCase = mockk<FetchCharacterUseCase>(relaxed = true)
             val viewModel = HomeViewModel(useCase, getAppContext())
             viewModel.setDataSet(dataSet)
 
@@ -56,7 +57,7 @@ class HomeViewModelTest : AbstractRobolectricTest() {
     @Test
     fun `When fetchCharacters is called and dataset null or empty, verify use case is executed`() {
         val dataSet = mockk<ArrayList<CharacterModel>>(relaxed = true)
-        val useCase = mockk<FetchCharacterUseCaseImpl>(relaxed = true)
+        val useCase = mockk<FetchCharacterUseCase>(relaxed = true)
 
         val viewModel = HomeViewModel(useCase, getAppContext())
 

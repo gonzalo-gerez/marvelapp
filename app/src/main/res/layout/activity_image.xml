@@ -9,4 +9,4 @@
     android:transitionName="@string/thumb_transition"
     app:actualImageResource="@drawable/no_image"
     app:placeholderImage="@drawable/no_image"
-    tools:context=".image.ImageActivity" />
+    tools:context=".comic_image.ImageActivity" />

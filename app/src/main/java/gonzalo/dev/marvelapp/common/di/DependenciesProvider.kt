@@ -4,29 +4,55 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.components.SingletonComponent
-import gonzalo.dev.core.domain.usecase.FetchCharacterUseCase
-import gonzalo.dev.core.domain.usecase.FetchCharacterUseCaseImpl
 import gonzalo.dev.marvelapp.BuildConfig
-import gonzalo.dev.core.common.Timeout
-import gonzalo.dev.core.data.repository.CharacterFromNetwork
-import gonzalo.dev.core.data.services.HomeService
+import gonzalo.dev.marvelapp.common.annotation.Timeout
+import gonzalo.dev.marvelapp.home.data.repository.CharacterRepositoryImpl
+import gonzalo.dev.marvelapp.home.data.services.HomeService
+import gonzalo.dev.marvelapp.home.data.source.CharacterDataSource
+import gonzalo.dev.marvelapp.home.data.source.remote.CharacterRemoteSource
+import gonzalo.dev.marvelapp.home.domain.repository.CharacterRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 
 @Module
+@InstallIn(SingletonComponent::class)
+class RepositoryModule {
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class CharacterRepositoryQ
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class CharacterRemoteSourceQ
+
+    @CharacterRepositoryQ
+    @Provides
+    fun provideCharacterRepository(
+        @CharacterRemoteSourceQ characterDataSource: CharacterDataSource
+    ): CharacterRepository {
+        return CharacterRepositoryImpl(characterDataSource)
+    }
+
+    @CharacterRemoteSourceQ
+    @Provides
+    fun provideCharacterRemoteSource(homeService: HomeService): CharacterDataSource {
+        return CharacterRemoteSource(homeService)
+    }
+}
+/*@Module
 @InstallIn(ActivityRetainedComponent::class)
 class UseCaseModule {
 
     @Provides
-    fun provideFetchCharacterUseCase(homeService: HomeService): FetchCharacterUseCase = FetchCharacterUseCaseImpl(
-        CharacterFromNetwork(homeService)
+    fun provideFetchCharacterUseCase(homeService: HomeService): FetchCharacterUseCase = FetchCharacterUseCase(
+        CharacterRepositoryImpl(homeService)
     )
-}
+}*/
 
 @Module
 @InstallIn(SingletonComponent::class)
