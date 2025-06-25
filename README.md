@@ -1,4 +1,6 @@
 # Android - MarvelApp
+<img width="250" alt="Screenshot 2025-06-25 at 12 43 22" src="https://github.com/user-attachments/assets/beb33503-aa90-4051-b930-9b85409b03fc" />
+
 
 ## What is this repository for?
 
@@ -56,4 +58,5 @@ your company/startup or whatever.
 - Implement Room in order to complete the repository pattern.
 - Fix UI bugs when split mode is showing.
 - Complete test cases.
+
 
